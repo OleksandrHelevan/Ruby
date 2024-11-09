@@ -36,7 +36,7 @@ class Student
   end
 
   def add_student
-    raise ArgumentError, "Duplicate student" if student_duplicate?
+    raise ArgumentError, "Duplicate student.rb" if student_duplicate?
     @@students << self
   end
 
@@ -52,22 +52,3 @@ class Student
     @@students.select { |student| student.name == name }
   end
 end
-
-s1 = Student.new("Oleksandr", "Helevan", Date.new(2006,3,15))
-Student.new("Volodymyr", "Dobryanskiy", Date.new(2005,12,12))
-Student.new("Volodymyr", "Savtenko", Date.new(2006,2,23))
-Student.new("Anton", "Olianyuk", Date.new(2006,3,15))
-Student.new("Vlad", "Ostrovskiy", Date.new(2005,2,24))
-Student.new("Volodymyr", "Zanlovskiy", Date.new(2006,4,23))
-Student.new("Vasya", "Rusnak", Date.new(2006,7,29))
-
-puts "--------------------------"
-Student.get_students_by_age(18).each { |student| puts "#{student.name} #{student.surname} - #{student.calculate_age} years" }
-puts "--------------------------"
-Student.get_students_by_name("Volodymyr").each { |student| puts "#{student.name} #{student.surname}" }
-puts "--------------------------"
-Student.all_students.each_with_index { |student, index| puts "#{index+1}. #{student.name} #{student.surname}" }
-
-Student.remove_student(s1)
-puts "--------------------------"
-Student.all_students.each_with_index { |student, index| puts "#{index+1}. #{student.name} #{student.surname}" }
